@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Vincent | Blog&#39;s</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###应用程序分类显示
+
+划分集合
+List&amp;lt;AppInfo&amp;gt; allApps = AppUtil.getAllApps(this);
+
+for (AppInfo appInfo : allApps) {
+    //遍历得到的对象，判断是否是系统程序，如果是：
+    if(appInfo.isSystem){
+        mSystemInfos.add(appInfo);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vincent">
+<meta property="og:url" content="http://yoursite.com/2016/04/08/Vincent/index.html">
+<meta property="og:site_name" content="Blog's">
+<meta property="og:description" content="###应用程序分类显示
+
+划分集合
+List&amp;lt;AppInfo&amp;gt; allApps = AppUtil.getAllApps(this);
+
+for (AppInfo appInfo : allApps) {
+    //遍历得到的对象，判断是否是系统程序，如果是：
+    if(appInfo.isSystem){
+        mSystemInfos.add(appInfo);">
+<meta property="og:updated_time" content="2016-04-09T00:18:49.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vincent">
+<meta name="twitter:description" content="###应用程序分类显示
+
+划分集合
+List&amp;lt;AppInfo&amp;gt; allApps = AppUtil.getAllApps(this);
+
+for (AppInfo appInfo : allApps) {
+    //遍历得到的对象，判断是否是系统程序，如果是：
+    if(appInfo.isSystem){
+        mSystemInfos.add(appInfo);">
+  
+    <link rel="alternative" href="/atom.xml" title="Blog&#39;s" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Vincent Li</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Vincent Li</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="null" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Vincent Li</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Vincent" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/08/Vincent/" class="article-date">
+  	<time datetime="2016-04-08T15:11:27.000Z" itemprop="datePublished">2016-04-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vincent
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###应用程序分类显示</p>
+<ol>
+<li><p>划分集合</p>
+<pre><code>List&lt;AppInfo&gt; allApps = AppUtil.getAllApps(this);
+
+for (AppInfo appInfo : allApps) {
+    //遍历得到的对象，判断是否是系统程序，如果是：
+    if(appInfo.isSystem){
+        mSystemInfos.add(appInfo);
+    }else{
+        //否则就是用户程序
+        mUserInfos.add(appInfo);
+    }
+}
+
+AppAdapter adapter = new AppAdapter(mUserInfos , mSystemInfos , this);
+</code></pre></li>
+<li><p>getCount方法获取数据个数</p>
+<pre><code>@Override
+public int getCount() {
+    return mUserInfos.size() + mSystemInfos.size();
+}
+</code></pre></li>
+<li><p>getView方法获取数据</p>
+<pre><code>AppInfo appInfo = null;
+
+//如果当前的下标小于用户的个数，那么久取用户的数据
+if(position &lt; mUserInfos.size()){
+    appInfo = mUserInfos.get(position);
+}else{
+    //由于前面的position已经被用户程序使用了，所以系统程序的下标应该偏移到0位置，
+    appInfo = mSystemInfos.get(position - mUserInfos.size());
+}
+</code></pre></li>
+</ol>
+<p>###添加用户的表头</p>
+<ol>
+<li><p>在getCount方法里面 返回的size 多加一个 1 </p>
+<pre><code>int count = 0 ; 
+if(mUserInfos != null){
+    //这里之所以+1 ，是因为一会要多现实一个条目，这个条目就是用来现实表头。
+    count+= mUserInfos.size() +1 ; 
+}
+</code></pre></li>
+<li><p>在getView方法里面，判断当前的position是否是0 ，如果是0 ，就返回用户的表头</p>
+<pre><code>if(position == 0 ){
+    //用户的表头永远现实在第0个位置，所以每次来调用getView方法，都判断目前的position是不是0
+    TextView tv =new TextView(mContext);
+    tv.setText(&quot;用户程序(&quot;+mUserInfos.size()+&quot;个)&quot;);
+    tv.setBackgroundColor(Color.parseColor(&quot;#CECFCE&quot;));
+    tv.setPadding(3, 3, 3, 3);
+    return tv;
+}
+</code></pre></li>
+<li>由于第二部返回的是一个简单的textView,所以下面重用的时候，textView是不可能找到其他的findView控件，那么应该再加一个判断</li>
+</ol>
+<pre><code>ViewHolder holder = null;
+//节省重复构建view的工作， 只会构建一屏+1个的item对象，以后都重复使用它们。 
+if(convertView == null || convertView instanceof TextView){
+</code></pre><ol>
+<li>由于多了一个表头item ,它把0位置给占用了，所以所有的item条目获取数据都应该 偏移。</li>
+</ol>
+<pre><code>AppInfo appInfo = null;
+
+//如果当前的下标小于用户的个数，那么久取用户的数据
+if(position &lt; mUserInfos.size() +1 ){  // 这里+1 是因为前面有一个item条目被表头给占用了
+    appInfo = mUserInfos.get(position  -1); //让position偏移一个位置
+}else{
+    //由于前面的position已经被用户程序使用了，所以系统程序的下标应该偏移到0位置，
+    appInfo = mSystemInfos.get(position - mUserInfos.size() -1);
+}
+</code></pre><p>###显示系统的表头</p>
+<ol>
+<li><p>getCount方法里面多加一个条目</p>
+<pre><code>if(mSystemInfos != null){
+    count+= mSystemInfos.size() +1; 
+}
+</code></pre></li>
+<li><p>getView方法里面判断具体位置显示系统表头</p>
+<pre><code>//系统的表头 前面的用户集合+一个位置，就找到了系统的表头位置
+if(position == mUserInfos.size() +1 ){
+    //用户的表头永远现实在第0个位置，所以每次来调用getView方法，都判断目前的position是不是0
+    TextView tv =new TextView(mContext);
+    tv.setText(&quot;系统程序(&quot;+mSystemInfos.size()+&quot;个)&quot;);
+    tv.setBackgroundColor(Color.parseColor(&quot;#CECFCE&quot;));
+    tv.setPadding(3, 3, 3, 3);
+    return tv;
+}
+</code></pre></li>
+<li>由于多了一个系统的表头，所以下面的获取数据位置应该再偏移一个位置</li>
+</ol>
+<pre><code>//如果当前的下标小于用户的个数，那么久取用户的数据
+if(position &lt; mUserInfos.size() +1 ){  // 这里+1 是因为前面有一个item条目被表头给占用了
+    appInfo = mUserInfos.get(position  -1); //让position偏移一个位置
+}else{
+    //由于前面的position已经被用户程序和2个表头使用了，所以系统程序的下标应该偏移到0位置，
+    appInfo = mSystemInfos.get(position - mUserInfos.size() -2);
+}
+</code></pre><p>###悬浮的表头显示</p>
+<ol>
+<li>对listView进行滚动监听</li>
+</ol>
+<pre><code>    //状态发生改变的时候调用 ： 停止状态、 滚动状态 、 惯性滚动
+@Override
+public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    //public static int SCROLL_STATE_IDLE = 0;  //停止状态
+
+    //public static int SCROLL_STATE_TOUCH_SCROLL = 1; //触摸滚动
+
+    //public static int SCROLL_STATE_FLING = 2; //惯性滚动
+
+}
+
+
+    /**
+     * 
+     * AbsListView view :  listView对象
+     * firstVisibleItem ： 当前屏幕显示的第一条item下标
+     * visibleItemCount ： 当前屏幕内显示多少个条目
+     * totalItemCount ： listView总共有多少个条目
+     * 
+     */
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem,
+            int visibleItemCount, int totalItemCount) {
+        LogUtils.Logd(TAG, &quot;onScroll=firstVisibleItem=&quot;+firstVisibleItem);
+
+        //在这个范围区间内，就显示用户的表头
+        if(firstVisibleItem &lt; mUserInfos.size() +1){
+            mTvLabel.setText(&quot;用户程序(&quot;+mUserInfos.size()+&quot;个)&quot;);
+        }else{
+            mTvLabel.setText(&quot;系统程序(&quot;+mSystemInfos.size()+&quot;个)&quot;);
+        }
+    }
+</code></pre><p>###扩展</p>
+<pre><code>//用于控制指定的position位置，显示的条目是什么类型。 
+@Override
+public int getItemViewType(int position) {
+
+    //如果是0位置，那么显示的item类型是用户类型
+    if(position == 0 ){
+        return ITEM_USER;
+    }
+
+
+    //如果是mUserInfos.size() +1 的位置，那么显示的item类型是系统类型
+    if(position ==  mUserInfos.size() +1  ){
+        return ITEM_SYSTEM;
+    }
+
+
+    //否则，显示的就是系统默认的可复用的item类型
+    return super.getItemViewType(position);
+}
+
+
+//用于控制当前的listView到底显示的item类型有多少种类
+@Override
+public int getViewTypeCount() {
+    return 3;
+}
+
+
+//使用以上方法----------------
+
+if(getItemViewType(position) == ITEM_USER){
+    //用户的表头永远现实在第0个位置，所以每次来调用getView方法，都判断目前的position是不是0
+    TextView tv =new TextView(mContext);
+    tv.setText(&quot;用户程序(&quot;+mUserInfos.size()+&quot;个)&quot;);
+    tv.setBackgroundColor(Color.parseColor(&quot;#CECFCE&quot;));
+    tv.setPadding(3, 3, 3, 3);
+    return tv;
+}
+
+//系统的表头 前面的用户集合+一个位置，就找到了系统的表头位置
+if(getItemViewType(position) == ITEM_SYSTEM ){
+    //用户的表头永远现实在第0个位置，所以每次来调用getView方法，都判断目前的position是不是0
+    TextView tv =new TextView(mContext);
+    tv.setText(&quot;系统程序(&quot;+mSystemInfos.size()+&quot;个)&quot;);
+    tv.setBackgroundColor(Color.parseColor(&quot;#CECFCE&quot;));
+    tv.setPadding(3, 3, 3, 3);
+    return tv;
+}
+</code></pre><p>好处就在于，在convertView复用上，不用在使用以前的instanceOf 这个逻辑，并且也不会抛出异常。</p>
+<p>原因是： 系统只会复用item的type是0 的条目 。</p>
+<p>###加载进度提醒</p>
+<pre><code>/**
+ * 1. 这个方法是怎么运作的。
+ *      在activity类里面，有这个方法的定义，实际上它还是调用了handler的post方法
+ *     
+ * 2. 这里的runnable 不是一个子线程嘛？ 怎么还能把东西放在里面呢?
+ *     Runnable不是一个线程，它实际上就是一个接口
+ * 
+ */
+runOnUiThread(new Runnable() {
+
+    @Override
+    public void run() {
+        //以下3行代码都是更新UI的逻辑，所以应该放到主线程去。
+        mTvLabel.setText(&quot;用户程序(&quot;+mUserInfos.size()+&quot;个)&quot;);
+        AppAdapter adapter = new AppAdapter(mUserInfos , mSystemInfos , AppManagerActivity.this);
+        //更新UI了
+        mListView.setAdapter(adapter);
+    }
+});
+</code></pre><ul>
+<li>通过控件的隐藏显示来达到进度提醒的效果</li>
+<li><p>include属性，指的意思是包裹某一块具体的布局内容进来。</p>
+<pre><code>&lt;!--   包裹某一个具体的layout进来显示 --&gt;
+&lt;include layout=&quot;@layout/view_loading&quot;/&gt;
+</code></pre></li>
+</ul>
+<p>###重新定义进度条提示图片</p>
+<ol>
+<li>定义一个progressBar控件</li>
+<li><p>找到系统的progressBar的样式， 里面有一个样式我们要关注</p>
+<pre><code>&lt;style name=&quot;Widget.ProgressBar.Inverse&quot;&gt;
+    &lt;item name=&quot;android:indeterminateDrawable&quot;&gt;@android:drawable/progress_medium&lt;/item&gt;
+&lt;/style&gt;
+</code></pre></li>
+<li><p>以上的样式就是不断旋转的进度条显示的样式，我们要做的工作就是拷贝+修改。</p>
+<pre><code>&lt;rotate xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:drawable=&quot;@drawable/loading&quot;
+android:pivotX=&quot;50%&quot;
+android:pivotY=&quot;50%&quot;
+android:fromDegrees=&quot;0&quot;
+android:toDegrees=&quot;360&quot;
+/&gt;
+</code></pre></li>
+<li><p>使用自己的样式，并且定义旋转的时间</p>
+<pre><code> &lt;ProgressBar
+android:indeterminateDuration=&quot;700&quot;
+android:indeterminateDrawable=&quot;@drawable/progress_medium&quot;
+android:layout_width=&quot;wrap_content&quot;
+android:layout_height=&quot;wrap_content&quot; /&gt;
+</code></pre></li>
+</ol>
+<p>###点击外部取消popupWindow</p>
+<ol>
+<li>设置有焦点</li>
+<li>设置背景资源，并且不能是null</li>
+</ol>
+<p>原因： 是源码中有对背景进行判断，如果有背景，那么就是用一个容器来装早前的contentView.<br>并且这个容器里面复写了一个onTouchEvent的方法，正是在这个方法里面，触发了点击外部取消popupWindow的逻辑</p>
+<pre><code>private class PopupViewContainer extends FrameLayout {
+</code></pre><p>###popupwindow动画效果</p>
+<ol>
+<li><p>在anim文件夹中定义动画</p>
+<pre><code>&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; 
+ android:shareInterpolator=&quot;false&quot;
+&gt;
+
+&lt;translate
+    android:interpolator=&quot;@android:anim/anticipate_overshoot_interpolator&quot;
+    android:duration=&quot;600&quot;
+    android:fromXDelta=&quot;100%p&quot;
+    android:toXDelta=&quot;0&quot; /&gt;
+
+&lt;alpha
+    android:duration=&quot;600&quot;
+    android:fromAlpha=&quot;0.0&quot;
+    android:toAlpha=&quot;1.0&quot; /&gt;
+</code></pre><p> </p>
+</li>
+<li>在style里面定义动画样式</li>
+</ol>
+<pre><code>  &lt;!-- 这是popupwindow的动画 --&gt;
+&lt;style name=&quot;PopupWindowAnimationStyle&quot;&gt;
+    &lt;item name=&quot;android:windowEnterAnimation&quot;&gt;@anim/slide_in_right&lt;/item&gt;
+    &lt;item name=&quot;android:windowExitAnimation&quot;&gt;@anim/slide_out_right&lt;/item&gt;
+&lt;/style&gt;
+</code></pre><ol>
+<li><p>让popupwindow使用指定的动画样式</p>
+<pre><code>//给popupWindow设置动画
+//content---动画
+//popupWindow -- 动画
+popupWindow.setAnimationStyle(R.style.PopupWindowAnimationStyle);
+</code></pre></li>
+</ol>
+<p>###打开某个程序</p>
+<pre><code>//根据包名，获取到这个应用的首页intent意图对象
+Intent intent = pm.getLaunchIntentForPackage(mAppInfo.packageName);    
+
+if(intent != null){
+    startActivity(intent);
+}
+</code></pre><p>###软件卸载</p>
+<ol>
+<li><p>卸载程序</p>
+<pre><code>Intent intent = new Intent();
+        intent.setAction(&quot;android.intent.action.DELETE&quot;);
+        intent.addCategory(&quot;android.intent.category.DEFAULT&quot;);
+        intent.setData(Uri.parse(&quot;package:&quot;+mAppInfo.packageName));
+        startActivity(intent);
+</code></pre></li>
+<li><p>刷新listView</p>
+</li>
+</ol>
+<pre><code>a. 卸载一个程序，我们并不能从卸载的界面收到有效的通知。
+b. 所以我们应该注册一个广播接收者，用于获取应用程序卸载的广播
+c. 一旦收到了广播，那么就获取卸载的程序包名，并且遍历集合取出所有元素与之匹配
+d. 如果找到了元素，就移除它。注意： 请使用迭代器手段去遍历
+e. 最后记得取消注册广播接收者
+
+
+    //判断集合中的元素，与目前的卸载包名是否一致，如果一致，就移除这个元素。
+    Iterator&lt;AppInfo&gt; iterator = mUserInfos.iterator();
+    while (iterator.hasNext()) {
+        AppInfo appInfo = (AppInfo) iterator.next();
+        if(appInfo.packageName.equals(packageName)){
+            iterator.remove();
+            break;
+        }
+    }
+
+    //数据变化了，请求刷新界面。
+    mAdapter.notifyDataSetChanged();
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Vincent" data-title="Vincent" data-url="http://yoursite.com/2016/04/08/Vincent/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Vincent Li
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
