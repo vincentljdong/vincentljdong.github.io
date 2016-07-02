@@ -4,21 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>hexo-github博客搭建 | Vincent|Blog&#39;s</title>
+  <title>xStream解析xml | Vincent|Blog&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言作为IT界的一份子，如果我们没有属于自己的博客是不是显得自己很low，当我们查资料逛那些大牛的博客时，
-是不是很羡慕觉得自己应该也有一个属于机子的博客。">
+  <meta name="description" content="想了很久一直难以决定先写什么，直到这一刻我决定还是先从基础开始写起，循循渐进，这样可以巩固自己对基础的理解，也可以对后面的知识做个铺垫，好了，废话不多说，进入正题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo-github博客搭建">
-<meta property="og:url" content="http://yoursite.com/2016/04/11/hexo-github博客搭建/index.html">
+<meta property="og:title" content="xStream解析xml">
+<meta property="og:url" content="http://yoursite.com/2016/04/18/xStream解析xml/index.html">
 <meta property="og:site_name" content="Vincent|Blog's">
-<meta property="og:description" content="前言作为IT界的一份子，如果我们没有属于自己的博客是不是显得自己很low，当我们查资料逛那些大牛的博客时，
-是不是很羡慕觉得自己应该也有一个属于机子的博客。">
-<meta property="og:updated_time" content="2016-04-11T14:06:15.965Z">
+<meta property="og:description" content="想了很久一直难以决定先写什么，直到这一刻我决定还是先从基础开始写起，循循渐进，这样可以巩固自己对基础的理解，也可以对后面的知识做个铺垫，好了，废话不多说，进入正题。">
+<meta property="og:updated_time" content="2016-04-22T04:34:18.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo-github博客搭建">
-<meta name="twitter:description" content="前言作为IT界的一份子，如果我们没有属于自己的博客是不是显得自己很low，当我们查资料逛那些大牛的博客时，
-是不是很羡慕觉得自己应该也有一个属于机子的博客。">
+<meta name="twitter:title" content="xStream解析xml">
+<meta name="twitter:description" content="想了很久一直难以决定先写什么，直到这一刻我决定还是先从基础开始写起，循循渐进，这样可以巩固自己对基础的理解，也可以对后面的知识做个铺垫，好了，废话不多说，进入正题。">
   
     <link rel="alternative" href="/atom.xml" title="Vincent|Blog&#39;s" type="application/atom+xml">
   
@@ -175,11 +172,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hexo-github博客搭建" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-xStream解析xml" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/11/hexo-github博客搭建/" class="article-date">
-  	<time datetime="2016-04-11T13:53:27.000Z" itemprop="datePublished">2016-04-11</time>
+      <a href="/2016/04/18/xStream解析xml/" class="article-date">
+  	<time datetime="2016-04-18T15:10:26.000Z" itemprop="datePublished">2016-04-18</time>
 </a>
     </div>
   
@@ -192,7 +189,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo-github博客搭建
+      xStream解析xml
     </h1>
   
 
@@ -208,8 +205,132 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><pre><code>作为IT界的一份子，如果我们没有属于自己的博客是不是显得自己很low，当我们查资料逛那些大牛的博客时，
-是不是很羡慕觉得自己应该也有一个属于机子的博客。
+        <p>想了很久一直难以决定先写什么，直到这一刻我决定还是先从基础开始写起，循循渐进，这样可以巩固自己对基础的理解，也可以对后面的知识做个铺垫，好了，废话不多说，进入正题。<br><a id="more"></a></p>
+<blockquote>
+<p>xStream框架</p>
+</blockquote>
+<pre><code>xStresm可以完美解决javabean和xml之间的转换，不但可以修改某个特定节属性和节点的名称，还支持json的转换。
+</code></pre><blockquote>
+<p>准备工作</p>
+</blockquote>
+<pre><code>在开始写代码之前，有一个jar包是不可缺少的，不用我说大家应该都知道是什么。这里我就不提供xStream的下载了，大家可以自行到GitHub下载。
+
+把你下载好的jar包放在你的工程lib文件夹下
+</code></pre><blockquote>
+<p>测试代码</p>
+</blockquote>
+<ol>
+<li><p>首先new一个JavaBean出来，也就是创建一个Student.class,后面javabean转换xml时我们会使用这些数据        </p>
+<pre><code>public class Student {
+    //姓名
+private String name;
+    //性别
+private String sex;
+    //地址
+private String address;
+    //邮箱
+private String email;
+    //年龄
+private int age;
+
+    //空参构造函数
+public Student() {
+    }
+
+public String getName() {
+    return name;
+    }
+
+public void setName(String name) {
+    this.name = name;
+    }
+
+public String getSex() {
+    return sex;
+    }
+
+public void setSex(String sex) {
+    this.sex = sex;
+    }
+
+public String getAddress() {
+    return address;
+    }
+
+public void setAddress(String address) {
+    this.address = address;
+    }
+
+public String getEmail() {
+    return email;
+    }
+
+public void setEmail(String email) {
+    this.email = email;
+    }
+
+public int getAge() {
+    return age;
+    }
+
+public void setAge(int age) {
+    this.age = age;
+    }
+
+    }
+</code></pre></li>
+</ol>
+<ol>
+<li><p>核心代码Test.java</p>
+<pre><code>public class Test {
+public static void main(String[] args) {
+
+Student student = new Student();
+student.setName(&quot;Vincent&quot;);
+student.setAge(21);
+student.setAddress(&quot;广东省深圳市&quot;);
+student.setEmail(&quot;vincentlijdong@gmail.com&quot;);
+student.setSex(&quot;男&quot;);
+
+List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+list.add(student);
+
+XStream stream = new XStream();
+
+//students是xml外标签名，名字自己定义
+stream.alias(&quot;students&quot;, List.class);
+stream.alias(&quot;student&quot;, Student.class);
+
+//将javabean转换为xml
+String xml = stream.toXML(list);
+//在控制台显示
+System.out.println(xml);
+}
+}
+</code></pre></li>
+</ol>
+<pre><code>创建javabean对象，调用set方法添加数据，然后创建List集合,将javabean对象添加到集合。
+创建XStream对象解析javabean，然后将javabean转换为xml
+</code></pre><blockquote>
+<p>注意：</p>
+</blockquote>
+<pre><code>运行起来我们会发现报错了
+Caused by: java.lang.ClassNotFoundException: org.xmlpull.v1.XmlPullParserException
+这是因为我们还缺少一个jre包，从异常可以看出少了一个xmlpull包
+
+这个包也可以在github下载，我们将这个包导进去，在运行一下
+</code></pre><blockquote>
+<p>控制台显示结果：</p>
+</blockquote>
+<pre><code>&lt;students&gt;
+  &lt;student&gt;
+    &lt;name&gt;Vincent&lt;/name&gt;
+    &lt;sex&gt;男&lt;/sex&gt;
+    &lt;address&gt;广东省深圳市&lt;/address&gt;
+    &lt;email&gt;vincentlijdong@gmail.com&lt;/email&gt;
+    &lt;age&gt;21&lt;/age&gt;
+  &lt;/student&gt;
+&lt;/students&gt;
 </code></pre>
       
     </div>
@@ -219,18 +340,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/04/11/Handle消息机制/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/07/02/Fragment生命周期/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Handle消息机制
+          Fragment生命周期
         
       </div>
     </a>
   
   
-    <a href="/2016/03/16/浅谈MVC、MVP、MVVM/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">浅谈MVC、MVP、MVVM</div>
+    <a href="/2016/04/11/Handle消息机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Handle消息机制</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -265,7 +386,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hexo-github博客搭建" data-title="hexo-github博客搭建" data-url="http://yoursite.com/2016/04/11/hexo-github博客搭建/"></div>
+	<div class="ds-thread" data-thread-key="xStream解析xml" data-title="xStream解析xml" data-url="http://yoursite.com/2016/04/18/xStream解析xml/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
