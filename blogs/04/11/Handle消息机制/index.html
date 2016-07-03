@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>浅谈MVC、MVP、MVVM | Vincent|Blog&#39;s</title>
+  <title>Handle消息机制 | Vincent|Blog&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MVC、MVP、MVVM">
+  <meta name="description" content="我们都知道，Android UI是线程不安全的，如果在子线程中尝试进行UI操作，程序就有可能会崩溃。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈MVC、MVP、MVVM">
-<meta property="og:url" content="http://yoursite.com/2016/03/16/浅谈MVC、MVP、MVVM/index.html">
+<meta property="og:title" content="Handle消息机制">
+<meta property="og:url" content="http://yoursite.com/2016/04/11/Handle消息机制/index.html">
 <meta property="og:site_name" content="Vincent|Blog's">
-<meta property="og:description" content="MVC、MVP、MVVM">
-<meta property="og:updated_time" content="2016-04-16T10:06:07.275Z">
+<meta property="og:description" content="我们都知道，Android UI是线程不安全的，如果在子线程中尝试进行UI操作，程序就有可能会崩溃。">
+<meta property="og:updated_time" content="2016-04-11T16:20:44.859Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈MVC、MVP、MVVM">
-<meta name="twitter:description" content="MVC、MVP、MVVM">
+<meta name="twitter:title" content="Handle消息机制">
+<meta name="twitter:description" content="我们都知道，Android UI是线程不安全的，如果在子线程中尝试进行UI操作，程序就有可能会崩溃。">
   
     <link rel="alternative" href="/atom.xml" title="Vincent|Blog&#39;s" type="application/atom+xml">
   
@@ -71,7 +71,7 @@
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -172,11 +172,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-浅谈MVC、MVP、MVVM" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Handle消息机制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/16/浅谈MVC、MVP、MVVM/" class="article-date">
-  	<time datetime="2016-03-16T07:50:17.000Z" itemprop="datePublished">2016-03-16</time>
+      <a href="/2016/04/11/Handle消息机制/" class="article-date">
+  	<time datetime="2016-04-11T15:05:18.000Z" itemprop="datePublished">2016-04-11</time>
 </a>
     </div>
   
@@ -189,7 +189,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      浅谈MVC、MVP、MVVM
+      Handle消息机制
     </h1>
   
 
@@ -205,21 +205,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MVC、MVP、MVVM</p>
-<a id="more"></a>
-<blockquote>
-<p>MVC</p>
-</blockquote>
-<p>1.</p>
-<blockquote>
-<p>MVP</p>
-</blockquote>
-<p>1.</p>
-<blockquote>
-<p>MVVM</p>
-</blockquote>
-<p>1.</p>
-
+        <pre><code>我们都知道，Android UI是线程不安全的，如果在子线程中尝试进行UI操作，程序就有可能会崩溃。
+</code></pre><a id="more"></a>
+<pre><code>相信大家在日常的
+工作当中都会经常遇到这个问题，解决的方案应该也是早已烂熟于心，即创建一个Message对象，然后借助Handler
+发送出去，之后在Handler的handleMessage()方法中获得刚才发送的Message对象，然后在这里进行UI操作就不会再出现崩溃了。
+这种处理方式被称为异步消息处理线程，虽然我相信大家都会用，可是你知道它背后的原理是什么样的吗？
+今天我们就来一起深入探究一下Handler和Message背后的秘密。
+</code></pre>
       
     </div>
     
@@ -228,18 +221,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/04/11/hexo-github博客搭建/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/04/18/xStream解析xml/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          hexo-github博客搭建
+          xStream解析xml
         
       </div>
     </a>
   
   
-    <a href="/2015/07/02/Fragment生命周期/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Fragment生命周期</div>
+    <a href="/2016/04/11/hexo-github博客搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo-github博客搭建</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -274,7 +267,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="浅谈MVC、MVP、MVVM" data-title="浅谈MVC、MVP、MVVM" data-url="http://yoursite.com/2016/03/16/浅谈MVC、MVP、MVVM/"></div>
+	<div class="ds-thread" data-thread-key="Handle消息机制" data-title="Handle消息机制" data-url="http://yoursite.com/2016/04/11/Handle消息机制/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

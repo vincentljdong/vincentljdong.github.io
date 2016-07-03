@@ -906,6 +906,7 @@ a {
   margin-left: 200px;
   padding: 15px 0;
   margin-right: 75px;
+  background: #fff;
 }
 .article-index .brief {
   display: block;
@@ -2150,7 +2151,7 @@ pre .css ~ * .id {
 }
 .article-pop-out:before {
   float: left;
-  color: #999;
+  color: #f00;
   content: "\f08d";
   font: 16px FontAwesome;
   float: left;
