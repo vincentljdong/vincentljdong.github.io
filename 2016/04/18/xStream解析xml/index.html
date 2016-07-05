@@ -12,13 +12,15 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/18/xStream解析xml/index.html">
 <meta property="og:site_name" content="Vincent|Blog's">
 <meta property="og:description" content="想了很久一直难以决定先写什么，直到这一刻我决定还是先从基础开始写起，循循渐进，这样可以巩固自己对基础的理解，也可以对后面的知识做个铺垫，好了，废话不多说，进入正题。">
+<meta property="og:image" content="http://yoursite.com/img/StudentBean.png">
+<meta property="og:image" content="http://yoursite.com/img/xstreamtest.png">
 <meta property="og:image" content="http://yoursite.com/img/xml.png">
 <meta property="og:image" content="http://yoursite.com/img/2.jpg">
-<meta property="og:updated_time" content="2016-07-05T03:00:43.614Z">
+<meta property="og:updated_time" content="2016-07-05T03:31:47.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xStream解析xml">
 <meta name="twitter:description" content="想了很久一直难以决定先写什么，直到这一刻我决定还是先从基础开始写起，循循渐进，这样可以巩固自己对基础的理解，也可以对后面的知识做个铺垫，好了，废话不多说，进入正题。">
-<meta name="twitter:image" content="http://yoursite.com/img/xml.png">
+<meta name="twitter:image" content="http://yoursite.com/img/StudentBean.png">
   
     <link rel="alternative" href="/atom.xml" title="Vincent|Blog&#39;s" type="application/atom+xml">
   
@@ -230,93 +232,13 @@
 <p>测试代码</p>
 </blockquote>
 <ol>
-<li><p>首先new一个JavaBean出来，也就是创建一个Student.class,后面javabean转换xml时我们会使用这些数据        </p>
-<pre><code>public class Student {
-//姓名
-private String name;
-//性别
-private String sex;
-//地址
-private String address;
-//邮箱
-private String email;
-//年龄
-private int age;
-
-//空参构造函数
-public Student() {
-    }
-
-public String getName() {
-    return name;
-    }
-
-public void setName(String name) {
-    this.name = name;
-    }
-
-public String getSex() {
-    return sex;
-    }
-
-public void setSex(String sex) {
-    this.sex = sex;
-    }
-
-public String getAddress() {
-    return address;
-    }
-
-public void setAddress(String address) {
-    this.address = address;
-    }
-
-public String getEmail() {
-    return email;
-    }
-
-public void setEmail(String email) {
-    this.email = email;
-    }
-
-public int getAge() {
-    return age;
-    }
-
-public void setAge(int age) {
-    this.age = age;
-    }
-}
-</code></pre></li>
+<li>首先new一个JavaBean出来，也就是创建一个Student.class,后面javabean转换xml时我们会使用这些数据    </li>
 </ol>
+<p><img src="img/StudentBean.png" alt="">    </p>
 <ol>
-<li><p>核心代码Test.java</p>
-<pre><code>public class Test {
-public static void main(String[] args) {
-
-Student student = new Student();
-student.setName(&quot;Vincent&quot;);
-student.setAge(21);
-student.setAddress(&quot;广东省深圳市&quot;);
-student.setEmail(&quot;vincentlijdong@gmail.com&quot;);
-student.setSex(&quot;男&quot;);
-
-List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
-list.add(student);
-
-XStream stream = new XStream();
-
-//students是xml外标签名，名字自己定义
-stream.alias(&quot;students&quot;, List.class);
-stream.alias(&quot;student&quot;, Student.class);
-
-//将javabean转换为xml
-String xml = stream.toXML(list);
-//在控制台显示
-System.out.println(xml);
-</code></pre><p>}<br>}</p>
-</li>
+<li>核心代码Test.java</li>
 </ol>
+<p><img src="img/xstreamtest.png" alt=""></p>
 <p>创建javabean对象，调用set方法添加数据，然后创建List集合,将javabean对象添加到集合。<br>创建XStream对象解析javabean，然后将javabean转换为xml</p>
 <blockquote>
 <p>注意：</p>
@@ -327,7 +249,7 @@ System.out.println(xml);
 <p>控制台显示结果：</p>
 </blockquote>
 <p><img src="img/xml.png" alt=""></p>
-<p>&emsp;&emsp;是不是感觉特别简单，这里讲的只是将javabean解析为xml,还没讲怎样将xml数据解析封装成业务Bean,并且获取数据进行绑定显示在界面，这些后期都会一一介绍。当然后面我们会讲另一种数据，json数据是如何解析的，并且会介绍比较常见的几种解析Json的框架，并带你们深入理解。</p>
+<p>&emsp;&emsp;是不是感觉特别简单，这里讲的只是将javabean解析为xml,还没讲怎样将xml数据解析封装成业务Bean,并且获取数据进行绑定显示在界面，这些后期都会一一介绍。当然后面我们会讲另一种数据，json数据是如何解析的，并且会介绍比较常见的几种解析Json的框架(Gson、FastJson等)，并带你们深入理解。</p>
 <hr>
 
 
