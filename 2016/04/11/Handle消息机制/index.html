@@ -4,18 +4,29 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Handle消息机制 | Vincent|Blog&#39;s</title>
+  <title>Handle消息机制之一个问题引发的源码分析 | Vincent|Blog&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们都知道，Android UI是线程不安全的，如果在子线程中尝试进行UI操作，程序就有可能会崩溃。">
+  <meta name="description" content="&amp;emsp;&amp;emsp;我们都知道，在子线程中尝试进行UI操作或者在主线程中做耗时的操作（网络请求，大量数据库操作等），程序就有可能会报ANR或造成崩溃。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Handle消息机制">
+<meta property="og:title" content="Handle消息机制之一个问题引发的源码分析">
 <meta property="og:url" content="http://yoursite.com/2016/04/11/Handle消息机制/index.html">
 <meta property="og:site_name" content="Vincent|Blog's">
-<meta property="og:description" content="我们都知道，Android UI是线程不安全的，如果在子线程中尝试进行UI操作，程序就有可能会崩溃。">
-<meta property="og:updated_time" content="2016-04-11T16:20:44.859Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;我们都知道，在子线程中尝试进行UI操作或者在主线程中做耗时的操作（网络请求，大量数据库操作等），程序就有可能会报ANR或造成崩溃。">
+<meta property="og:image" content="http://yoursite.com/img/Handler.png">
+<meta property="og:image" content="http://yoursite.com/img/mylooper.png">
+<meta property="og:image" content="http://yoursite.com/img/looperprepare.png">
+<meta property="og:image" content="http://yoursite.com/img/ActivityThread.png">
+<meta property="og:image" content="http://yoursite.com/img/prepareMainLooper.png">
+<meta property="og:image" content="http://yoursite.com/img/sendMessage.png">
+<meta property="og:image" content="http://yoursite.com/img/enqueueMessage.png">
+<meta property="og:image" content="http://yoursite.com/img/loop.png">
+<meta property="og:image" content="http://yoursite.com/img/dispatchMessage.png">
+<meta property="og:image" content="http://yoursite.com/img/3.jpg">
+<meta property="og:updated_time" content="2016-07-08T03:39:13.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Handle消息机制">
-<meta name="twitter:description" content="我们都知道，Android UI是线程不安全的，如果在子线程中尝试进行UI操作，程序就有可能会崩溃。">
+<meta name="twitter:title" content="Handle消息机制之一个问题引发的源码分析">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;我们都知道，在子线程中尝试进行UI操作或者在主线程中做耗时的操作（网络请求，大量数据库操作等），程序就有可能会报ANR或造成崩溃。">
+<meta name="twitter:image" content="http://yoursite.com/img/Handler.png">
   
     <link rel="alternative" href="/atom.xml" title="Vincent|Blog&#39;s" type="application/atom+xml">
   
@@ -71,7 +82,7 @@
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -108,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/坚持，一直没有停止/" style="font-size: 10px;">坚持，一直没有停止</a>
+						<a href="/tags/坚持，从未停止/" style="font-size: 10px;">坚持，从未停止</a>
 					</div>
 				</section>
 				
@@ -189,7 +200,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Handle消息机制
+      Handle消息机制之一个问题引发的源码分析
     </h1>
   
 
@@ -197,6 +208,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/坚持，从未停止/">坚持，从未停止</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -205,14 +220,75 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>我们都知道，Android UI是线程不安全的，如果在子线程中尝试进行UI操作，程序就有可能会崩溃。
-</code></pre><a id="more"></a>
-<pre><code>相信大家在日常的
-工作当中都会经常遇到这个问题，解决的方案应该也是早已烂熟于心，即创建一个Message对象，然后借助Handler
-发送出去，之后在Handler的handleMessage()方法中获得刚才发送的Message对象，然后在这里进行UI操作就不会再出现崩溃了。
-这种处理方式被称为异步消息处理线程，虽然我相信大家都会用，可是你知道它背后的原理是什么样的吗？
-今天我们就来一起深入探究一下Handler和Message背后的秘密。
-</code></pre>
+        <p>&emsp;&emsp;我们都知道，在子线程中尝试进行UI操作或者在主线程中做耗时的操作（网络请求，大量数据库操作等），程序就有可能会报ANR或造成崩溃。<br><a id="more"></a></p>
+<h5><strong>转载请注明出处:</strong><a href="http://vincentljdong.github.io/" target="_blank" rel="external">http://vincentljdong.github.io/</a></h5>
+
+<p>&emsp;&emsp;为什么说是一个问题引发的对Handler源码的分析呢？先卖个关子这里先不说。我们先谈一谈Handler机制的通俗解释，如下：</p>
+<ul>
+<li>Handler机制是处理不同线程间通信，那么我们是不是主要涉及到Handler类和Thread类</li>
+</ul>
+<blockquote>
+<p>Thread类（实现了Runnable接口）</p>
+</blockquote>
+<pre><code>MessageQueue:我们应该可以猜出来是消息队列，存放线程存入的消息
+Looper:管理线程的工具
+</code></pre><blockquote>
+<p>Handler类</p>
+</blockquote>
+<pre><code>重写了handlerMessage方法，用于不同线程间通信，举个实际例子：
+在实际开发中我们要从网络获取数据，对于网络请求数据是不可能放在主线程（程序启动时就会开启主线程也叫UI线程）中执行，
+请求数据是耗时操作，如果放在主线程会造成程序ANR，一般我们是怎样处理，开启一条子线程，
+把一切耗时的操作放在子线程执行，让UI线程（从字面就可看出是专门管理UI界面的）去更新UI，
+但是问题来了，当我们网络数据请回来后，UI线程就怎么知道去将数据显示在界面呢？
+</code></pre><p>首先在主线中创建子线程，让子线程去完成网络请求这一耗时操作，在此之前需要在主线程创建Handler对象  </p>
+<pre><code>  Handler mHandler=new Handler(){
+   @Override
+   public void handleMessage(Message msg) {
+       super.handleMessage(msg);
+    }
+};
+</code></pre><blockquote>
+<p>接下来说一下怎样将数据通过主线程更新显示在界面。</p>
+</blockquote>
+<ul>
+<li>子线程将自己请求回来的消息放进自己的MessageQueue(消息队列)</li>
+<li>子线程通过Looper将MessageQueue里面的数据取出</li>
+<li>子线程通过Looper将数据发送给Handler</li>
+<li>主线程通过Looper将Handler中的数据取出</li>
+<li>主线程通过Looper将取出的的数据发送给主线程的MessageQueue</li>
+<li><p>最后主线程执行对消息处理的任务</p>
+<p>&emsp;&emsp;我相信，大家对Handler机制有一定的了解了，Handler机制在面试中也是经常问的一道题。OK，接下来就要引入标题的问题了，这个问题还是我同学问我的，<code>Can&#39;t create handler inside thread that has not called Looper.prepare()</code>报这个错问我怎样解决，我当时看了一下他的代码(很高冷的^-^)对他说需要在子线程调一下Looper.prepare()，之后在创建Handler对象,但是我们就仅限于知道怎样解决问题吗，显然这不符合我的风格，要想弄清楚原理我们只能从源码着手，OK，我们来看一下Handler的源码，为什么不调用Looper.prepare()就不行呢</p>
+</li>
+</ul>
+<blockquote>
+<p>Handler无参构造函数</p>
+</blockquote>
+<p><img src="img/Handler.png" alt=""><br> &emsp;&emsp;看红色矩形框内Looper.myLooper()方法获取了一个对象，做了一个判断如果mLooper等于空时抛了一个运行时异常，该错误就是<code>Can&#39;t create handler inside thread that has not called Looper.prepare()</code>,那么mLooper对象什么时候为空呢？我们需要看一下Looper.myLooper()方法中的代码：</p>
+<p><img src="img/mylooper.png" alt=""></p>
+<p> &emsp;&emsp;只有一行，sThreadLocal取出的是Looper,如果Looper存在，那么就直接返回Looper，如果不存在那就直接返回null，我们再接着看Looper.prepare()方法中的代码：</p>
+<p><img src="img/looperprepare.png" alt=""></p>
+<p>&emsp;&emsp;不带参的prepare方法中调用的还是带参的prepare方法，我们直接看带参的这个，首先做了一个判断，sThreadLocal是否存在Looper，存在抛出一个运行时异常，如果不存在就直接创建一个新的Looper,这里应该知道为什么要先调用Looper.prepare()方法了吧，只有存在Looper后才能new Handler对象，并且每一个线程只能对应一个Looper。可能有的哥们会问，我在主线程也没有调用Looper.prepare()啊，为什么没有报错呢？这是因为主线程默认就存在一个Looper并不需要我们手动创建。我们看一下主线程ActivityThread类的main方法:</p>
+<p><img src="img/ActivityThread.png" alt=""></p>
+<p> &emsp;&emsp;我们看一下红色框内调用了Looper.prepareMainLooper()方法，其实看一下prepareMainLooper()里面的代码我们就会知道调用的还是Looper.prepare()</p>
+<p><img src="img/prepareMainLooper.png" alt=""><br> &emsp;这次是不是很清楚了，也就是主线程可以直接创建Handler对象，子线程需要先调用Looper.prepare();在创建Handler对象。</p>
+<p>&emsp;&emsp;在上面我们已经通俗的讲解了Handler机制，现在我们在进一步来了解Handler，在Handler中有好几种发送消息的方法，我们主要看一下<code>sendMessageAtTime(Message msg,long uptimeMillis)</code>方法</p>
+<p><img src="img/sendMessage.png" alt=""></p>
+<p>&emsp;&emsp;msg就是要发送的消息，uptimeMillis是发送消息的时间，然后将这两个参数传入MessageQueue的<code>enqueueMessage</code>方法中，MessageQueue我们在上面已经说了就是消息队列，对消息进行排列，并且有入队出队的方法，MessageQueue通过Looper的构造函数创建的，一个Looper对应一个MessageQueue，而<code>enqueueMessage</code>我们应该能猜出就是入队方法，我们来看一看它的源码：</p>
+<p><img src="img/enqueueMessage.png" alt=""></p>
+<p> &emsp;&emsp;我们要知道，消息在MessageQueue中并不是用集合或者其他保存起来的，而是使用mMessages对象表示当前待处理的消息，从红色框内可以看出，所谓入队其实就是将消息按照发送消息时的时间进行排序，这里的时间就是上面说的uptimeMillis,通过时间顺序调用msg.next确定下一条消息是什么。看完入队，我们看一下出队，我们来看一看Looper.loop()方法：</p>
+<p><img src="img/loop.png" alt=""></p>
+<p>&emsp;&emsp;你们看出来了什么，next()是不是就是出队的方法，你们有兴趣可以去MessageQueue中看看next()方法源码，我这里就不贴出来了，要不然一说停不下收不了尾。这里简单说一说消息出队的原理，如果MessageQueue存在mMessages待处理消息，那么Looper就取出这条消息，然后下一条就成为mMessages待处理消息，就这里一直循环，如果MessageQueue不存在mMessages待处理消息，那么就成为阻塞状态，直到下一条消息入队。看第二条红色线我们发现出队的消息都经过msg.target.dispatchMessage()进行处理，心细的同学可能知道msg.target其实就是Handler，不知道的同学返回去看sendMessageAtTime方法的源码第六行，接下来我们接着看Handler的dispatchMessage()</p>
+<p><img src="img/dispatchMessage.png" alt=""></p>
+<p>&emsp;&emsp;看了之后是不是感觉豁然开朗，我们经过一系列的发送消息、入队、出队、接收消息等，到最后调用Handler的handlerMessage方法，这时handlerMessage方法已经在主线程运行，就可以更新UI了。</p>
+<p>&emsp;&emsp;呼，真心累，就到这里吧，我们下面文章见^-^</p>
+<hr>
+
+
+<p><strong>每日一碗鸡汤</strong></p>
+<font color="#E5953E"><b>每当你想放弃的时候，就想想那一刻你的勇气。让成为过去的那一刻的勇气，变成此时此刻，你坚持的勇气。</b></font>
+
+<p><img src="img/3.jpg" alt=""></p>
+
       
     </div>
     
@@ -231,8 +307,8 @@
     </a>
   
   
-    <a href="/2016/04/11/hexo-github博客搭建/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo-github博客搭建</div>
+    <a href="/2015/07/02/Fragment生命周期/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Fragment探索</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -267,7 +343,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Handle消息机制" data-title="Handle消息机制" data-url="http://yoursite.com/2016/04/11/Handle消息机制/"></div>
+	<div class="ds-thread" data-thread-key="Handle消息机制" data-title="Handle消息机制之一个问题引发的源码分析" data-url="http://yoursite.com/2016/04/11/Handle消息机制/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
